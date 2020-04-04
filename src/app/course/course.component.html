@@ -1,0 +1,49 @@
+<!-- propert binding "one way" -->
+<!-- condition : add class depends on condition-->
+<!-- <li class="list-group-item" [ngClass]="{'list-group-item-success': isAvailabel,
+'list-group-item-danger': !isAvailabel}" appMakeItBlue>
+    {{title}} Course is {{isAvailabel ? 'Availabel' : 'Not Availabel'}} 
+</li> -->
+
+<!-- <li class="list-group-item" ngClass="list-group-item-success" appMakeItBlue>
+    {{title}} Course is {{isAvailabel ? 'Availabel' : 'Not Availabel'}}
+
+    <br>
+    Instructor: {{instructor}}
+
+    <br>
+    Avaliable: {{isAvailabel}}
+</li>
+
+
+<div [ngSwitch]="title">
+    <div *ngSwitchCase="'Angular'">Angular Course</div>
+    <div *ngSwitchCase="'CSharp'">C# Course</div>
+    <div *ngSwitchCase="'CPP'">C++ Course</div>
+
+    <div *ngSwitchDefault>Unknown Course</div>
+</div> -->
+
+
+<li *ngIf="course" class="list-group-item" ngClass="list-group-item-success" appMakeItBlue>
+    {{course.title}} Course is {{course.isAvailabel ? 'Availabel' : 'Not Availabel'}}
+
+    <br>
+    Instructor: {{course.instructor}}
+
+    <br>
+    Avaliable: {{course.isAvailabel}}
+</li>
+
+
+<div [ngSwitch]="course.title">
+    <div *ngSwitchCase="'Angular'">Angular Course</div>
+    <div *ngSwitchCase="'CSharp'">C# Course</div>
+    <div *ngSwitchCase="'CPP'">C++ Course</div>
+    <div *ngSwitchCase="'NodeJS'">NodeJS Course</div>
+    <div *ngSwitchCase="'Kotlin'">Kotlin Course</div>
+    <div *ngSwitchCase="'Agile'">Agile Course</div>
+    <div *ngSwitchCase="'Flutter'">Flutter Course</div>
+
+    <div *ngSwitchDefault>Unknown Course</div>
+</div>

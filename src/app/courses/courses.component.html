@@ -1,0 +1,86 @@
+<h4 class="text-light">
+    {{title}}
+</h4>
+
+<hr style="background-size: 4px; border-top: 2px solid #FFF0F2;
+border-color: #FFF0F2;">
+
+<!-- ngClass, ngModel, ngStyle are Directive attributes: 
+    give the element more behavior or styling 
+    -- doesnt change in the structre of the page -->
+
+<div class="row" [ngStyle]="{backgroundColor:''}">
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <label for="course" class="col-sm-2 col-form-label text-light">Course:</label>
+            <div class="col-sm-8">
+                <!-- Two way binding : get value from the input to make changes with it (ngModel not an built in module)-->
+                <input type="text" name="course" id="course" class="form-control" [(ngModel)]="courseTitle">
+            </div>
+
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary" (click)="onClick($event)"> Add </button>
+            </div>
+
+            <!-- <div class="form-group row">
+                <!-- <label for="instructor" class="col-sm-2 col-form-label text-light">Instructor:</label> -->
+            <!-- <div class="col-sm-8"> -->
+            <!-- Two way binding : get value from the input to make changes with it (ngModel not an built in module)-->
+            <!-- manually instead of ngModel -->
+            <!-- <input type="text" name="instructor" id="instructor" class="form-control" (input)="onInput($event)" [value]="courseInstructor"> -->
+            <!-- </div> -->
+            <!-- </div> -->
+
+        </div>
+        <!-- if-codeition  -->
+        <!-- if-else : needs local refrence -->
+        <div class="col-sm-12 text-light" *ngIf="!isThereAnNewCourse else newCoursesMsgTemplete">
+            <!-- print the value entered into the input -->
+            <!-- {{courseTitle}} -->
+            <!-- {{courseInstructor}} -->
+            <p>{{noNewCoursesMsg}}</p>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <!-- List of Courses -->
+        <!-- we need looping here -->
+        <ul class="list-group">
+            <!-- course: is temp var.
+                courses: is my array var -->
+            <!-- <app-course *ngFor="let course of courses" [title]="course.title" [instructor]="course.instructor" [isAvailabel]="course.isAvailabel"></app-course> -->
+ 
+            <app-course *ngFor="let course of courses" [courseData]="course"></app-course>
+
+        </ul>
+    </div>
+
+    <!-- <div class="col-sm-12"> -->
+        <!-- <ul class="list-group"> -->
+            <!-- temp -->
+            <!-- <div *ngFor="let course of courses; index as i; first as firstElement; last as lastElement"> -->
+                <!-- <li class="list-group-item" *ngIf="course.isAvailable"> -->
+
+                    <!-- Index: {{i}} {{firstElement}} {{lastElement}} -->
+                    <!-- <br> -->
+                    <!-- Title: {{course.title}} -->
+                    <!-- <br> -->
+                    <!-- Instructor: {{course.instructor}} -->
+                    <!-- <br> -->
+                    <!-- Avalilable: {{course.isAvailable}} -->
+                <!-- </li> -->
+            <!-- </div> -->
+        <!-- </ul> -->
+    <!-- </div> -->
+
+</div>
+
+
+
+<!-- ng-templet: not appear in the view just for use -->
+<!-- # : local refrence = else-statement -->
+<ng-template #newCoursesMsgTemplete>
+    <p class="text-light"> {{newCoursesMsg}}</p>
+</ng-template>
+
+<!-- ghkadous@hotmail.com -->
